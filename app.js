@@ -182,7 +182,7 @@ app.post("/updateUser/:email", (request, response) => {
 });
 
 // delete endpoint
-app.post("/checkDuplicates/:email", (request, response) => {
+app.get("/checkDuplicates/:email", (request, response) => {
   // check if email exists
   User.findOne({ email: request.params.email }) 
     .then(() => {
