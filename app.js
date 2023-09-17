@@ -147,7 +147,8 @@ app.post("/updateUser/:email", (request, response) => {
       const token = jwt.sign(
         {
           userId: user._id,
-          userEmail: user.email
+          userEmail: user.email,
+          userName: user.name
         },
         "RANDOM-TOKEN",
         { expiresIn: "24h" }
