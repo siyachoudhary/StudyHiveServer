@@ -140,6 +140,8 @@ app.post("/login", (request, response) => {
 // update endpoint
 app.post("/updateUser/:email", (request, response) => {
   // check if email exists
+  console.log(request.params.email)
+  console.log(request.body.email)
   User.updateOne({ email: request.params.email }, request.body, {runValidators:true,new:true}) 
     .then((user) => {
       const token = jwt.sign(
@@ -151,7 +153,7 @@ app.post("/updateUser/:email", (request, response) => {
         { expiresIn: "24h" }
       );
 
-      User.findOne({ email: request.params.email }) 
+      User.findOne({ email: request.body.email }) 
     .then((user) => {
 
       response.status(200).send({
