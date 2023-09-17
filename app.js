@@ -184,6 +184,7 @@ app.post("/updateUser/:email", (request, response) => {
 // delete endpoint
 app.get("/checkDuplicates/:email", (request, response) => {
   // check if email exists
+  console.log(request.params.email)
   User.findOne({ email: request.params.email }) 
     .then(() => {
       response.status(200).send({
